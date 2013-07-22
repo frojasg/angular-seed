@@ -29,6 +29,7 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 app.get('/linkedin', routes.linkedin);
+app.get('/background', routes.background);
 
 
 // redirect all others to the index (HTML5 history)
