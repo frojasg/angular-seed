@@ -12,13 +12,15 @@
     "underscore": "1.5.1"
   },
   "devDependencies": {
-    "mocha": "0.10.1"
+    "mocha": "0.10.1",
+    "should": "1.2.2",
+    "nock": "0.22.1"
   },
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
   },
   "scripts" : {
-    "test" : "./node_modules/.bin/mocha $(find test/mocha -name '*.js')"
+    "test" : "./node_modules/.bin/mocha --ignore-leaks $(find test/mocha -name '*.js')"
   }
 }
