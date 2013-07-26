@@ -36,7 +36,26 @@ describe('Flickr API client', function(){
         });
         done();
       });
-
     });
+
+    it('should get a default image when the service is down', function(done) {
+      nock('http://api.flickr.com/')
+        .get('/services/rest/?nojsoncallback=1&format=json&api_key=ola&photoset_id=72157634695438319&method=flickr.photosets.getPhotos')
+        .reply(200, {});
+      var flickr = new Flickr();
+      Flickr.should.be.a('function');
+      flickr.should.be.a('object');
+
+      flickr.getRandomImage(function (photos) {
+        photos.should.be.a('object');
+        __.find(photos, function(photo) { return photo.label == 'Small 320'; }).should.have.property('source');
+        __.find(photos, function(photo) { return photo.label == 'Large'; }).should.have.property('source');
+        __.each(photos, function(photo) {
+          photo.should.have.property('source');
+        });
+        done();
+      });
+    });
+
   });
 });
