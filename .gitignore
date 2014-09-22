@@ -2,8 +2,7 @@ logs/*
 !.gitkeep
 node_modules/
 .DS_Store
-
+*~
 
 #configuration
-config/linkedin.config.js
 .env
